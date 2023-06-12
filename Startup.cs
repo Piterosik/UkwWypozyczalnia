@@ -47,6 +47,12 @@ namespace UkwWypozyczalnia
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Categories",
+                    pattern: "{categoryName}",
+                    defaults: new { controller = "Films", action = "FilmsList" }
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "StaticSite",
                     pattern: "Info/{name}",
                     defaults: new { controller = "Home", actions = "StaticSite" }
