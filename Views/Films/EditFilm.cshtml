@@ -1,0 +1,31 @@
+﻿@model Film
+<div>
+    <table>
+        <tr>
+          
+            <td>
+                @using (Html.BeginForm("EditFilm", "Films"))
+                {
+                    
+                    <ul class="list-group list-group-flush">
+                        <li class=list-group-item>
+                            Tytuł:
+                            @Html.TextBoxFor(f => f.Title, new { @class = "form-control" })
+                        </li>
+                        <li class=list-group-item>
+                            Reżyser:
+                            @Html.TextBoxFor(f => f.Director, new { @class = "form-control" })
+                        </li>
+                        <li class=list-group-item>
+                            Cena:
+                            @Html.TextBoxFor(f => f.Price, new { @class = "form-control" })zł
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn btn-primary">
+                        Zapisz zmiany
+                    </button>
+                }
+            </td>
+        </tr>
+    </table>
+</div>

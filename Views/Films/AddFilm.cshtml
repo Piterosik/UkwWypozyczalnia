@@ -1,0 +1,29 @@
+﻿@using UkwWypozyczalnia.ViewModels;
+@model AddFilmViewModel
+
+@using (Html.BeginForm("AddFilm", "Films", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Film.Title, "Podaj tytuł: ")
+        @Html.TextBoxFor(m => m.Film.Title, new { @class = "form-control", @required = true })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Film.Director, "Podaj reżysera: ")
+        @Html.TextBoxFor(m => m.Film.Director, new { @class = "form-control", @required = true })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Film.Price, "Podaj cenę: ")
+        @Html.TextBoxFor(m => m.Film.Price, new { @class = "form-control", @required = true })
+    </div>
+    <label>Wybierz kategorię:</label>
+    <div class="form-check">
+        @foreach (var category in Model.Categories)
+        {
+            @Html.RadioButtonFor(m => m.Film.CategoryId, category.Id, new { @class="form-check-input", @required=true})
+            @Html.LabelFor(m => m.Film.CategoryId, category.Name, new { @class="form-check-label"})
+            <br />
+        }
+
+    </div>
+    <button type="submit" class="btn btn-primary"> Dodaj </button>
+}
