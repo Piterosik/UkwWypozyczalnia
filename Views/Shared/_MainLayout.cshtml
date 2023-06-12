@@ -1,6 +1,4 @@
-﻿@model IEnumerable<UkwWypozyczalnia.Models.Category>
-@{
-}
+﻿
 <html>
 <head>
     <link href="~/css/site.css" rel="stylesheet" />
@@ -10,10 +8,7 @@
 <body>
     <header class="menu-bar">
         <nav class="menu">
-            @foreach (var kategoria in Model)
-            {
-                <a class="menu-link" href="#"> @kategoria.Name </a>
-            }
+           @(await Component.InvokeAsync("Menu"))
         </nav>
     </header>
 
