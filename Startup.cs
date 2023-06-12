@@ -21,7 +21,7 @@ namespace UkwWypozyczalnia
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<FilmsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalBD")));
+            services.AddDbContext<FilmsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("db")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +46,12 @@ namespace UkwWypozyczalnia
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "StaticSite",
+                    pattern: "Info/{name}",
+                    defaults: new { controller = "Home", actions = "StaticSite" }
+                    );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

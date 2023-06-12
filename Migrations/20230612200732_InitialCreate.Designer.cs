@@ -11,7 +11,7 @@ using UkwWypozyczalnia.DAL;
 namespace UkwWypozyczalnia.Migrations
 {
     [DbContext(typeof(FilmsContext))]
-    [Migration("20230612192631_InitialCreate")]
+    [Migration("20230612200732_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
