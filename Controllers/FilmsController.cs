@@ -18,10 +18,16 @@ namespace UkwWypozyczalnia.Controllers
 
         public IActionResult FilmsList(string categoryName)
         {
-            var category = _db.Categories.Include("Films").Where(x => x.Name.ToUpper() == categoryName.ToUpper()).Single();
-            var films = category.Films.ToList();
-            return View(films);
+            if (categoryName != null)
+            {
+                var category = _db.Categories.Include("Films").Where(x => x.Name.ToUpper() == categoryName.ToUpper()).Single();
+                var films = category.Films.ToList();
+                return View(films);
+            }
+
+            return View(_db.Films.ToList());
         }
+
 
         [HttpGet]
         public IActionResult AddFilm()
@@ -59,12 +65,11 @@ namespace UkwWypozyczalnia.Controllers
             dbFilm.Title = film.Title;
             dbFilm.Director = film.Director;
             dbFilm.Price = film.Price;
-            dbFilm.CategoryId = film.CategoryId;
 
             _db.Entry(dbFilm).State = EntityState.Modified;
             _db.SaveChanges();
 
-            return RedirectToAction("ListFilms", "Films");
+            return RedirectToAction("FilmsList", "Films");
         }
 
 

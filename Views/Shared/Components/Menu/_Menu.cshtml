@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Category>
 
 	<nav class="menu">
+	<a class="menu-link" href="@Url.Action("FilmsList","Films")">Wszystkie</a>
 	@foreach(var category in Model)
 	{
 		<a class="menu-link" href="@Url.Action("FilmsList","Films",new {categoryName=category.Name})">@category.Name</a>
