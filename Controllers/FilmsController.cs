@@ -23,6 +23,7 @@ namespace UkwWypozyczalnia.Controllers
             return View(films);
         }
 
+        [HttpGet]
         public IActionResult AddFilm()
         {
             var model = new AddFilmViewModel();
@@ -33,6 +34,7 @@ namespace UkwWypozyczalnia.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult AddFilm(AddFilmViewModel model)
         {
             _db.Films.Add(model.Film);
@@ -41,6 +43,7 @@ namespace UkwWypozyczalnia.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
         public IActionResult EditFilm(int id)
         {
             var film = _db.Films.Where(x => x.Id == id).FirstOrDefault();
@@ -48,6 +51,7 @@ namespace UkwWypozyczalnia.Controllers
             return View(film);
         }
 
+        [HttpPost]
         public IActionResult EditFilm(Film film)
         {
             var dbFilm = _db.Films.Where(x => x.Id == film.Id).FirstOrDefault();
