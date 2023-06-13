@@ -6,4 +6,11 @@
 	{
 		<a class="menu-link" href="@Url.Action("FilmsList","Films",new {categoryName=category.Name})">@category.Name</a>
 	}
+	<div class="input-group menu-link">
+		@using (Html.BeginForm("Search", "Films"))
+		{
+			@Html.TextBox("term")
+			<button type="submit" class="btn btn-outline-light">Wyszukaj</button>
+		}
+	</div>
 	</nav>
