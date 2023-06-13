@@ -73,14 +73,16 @@ body {
 /* Własny CSS */
 .main-page {
     min-height: calc(100vh - 13rem);
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .menu-bar {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 5rem;
-    background-color: lightblue;
+    background-color: dimgrey;
 }
 
 .menu {
@@ -90,13 +92,18 @@ body {
 
 .menu-link {
     display: block;
+    color: aliceblue;
     font-size: 1.5rem;
     margin-right: 2rem;
     padding: 1rem 0;
     letter-spacing: 0.2rem;
 }
 
-    .menu-link:hover {
-        color: darkblue;
-        text-decoration: none;
-    }
+.menu-link:hover {
+   color: darkblue;
+   text-decoration: none;
+}
+
+td {
+    padding: 1.1rem;
+}

@@ -13,6 +13,17 @@
 			<button type="submit" class="btn btn-outline-light">Wyszukaj</button>
 		}
 	</div>
+	
+	@if (User.Identity.IsAuthenticated)
+	{
+		<div style="display: block; font-size: 1rem; padding: 1rem 0; margin-right: 2rem; color:aliceblue; font-weight: bold;">Witaj @User.Identity.Name</div>
+		<a class="menu-link" href="@Url.Action("Logout", "Account")">Wyloguj</a>
+	}
+	else
+	{
+		<a class="menu-link" href="@Url.Action("Register", "Account")">Rejestracja</a>
+		<a class="menu-link" href="@Url.Action("Login", "Account")">Logowanie</a>
 
+	}
 	<a class="menu-link" href="@Url.Action("Index","Cart")">Koszyk</a>
 </nav>

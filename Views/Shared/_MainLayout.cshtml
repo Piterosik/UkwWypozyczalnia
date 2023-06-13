@@ -7,9 +7,7 @@
 </head>
 <body>
     <header class="menu-bar">
-        <nav class="menu">
            @(await Component.InvokeAsync("Menu"))
-        </nav>
     </header>
 
     <main class="main-page">
@@ -36,6 +34,6 @@
             </ul>
         </footer>
     </div>
-
+    @RenderSection("Scripts",false);
 </body>
 </html>

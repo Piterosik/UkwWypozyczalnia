@@ -1,0 +1,29 @@
+﻿@using UkwWypozyczalnia.ViewModels;
+@model LoginViewModel
+
+<p class="alert-warning">
+    @ViewBag.result
+    @Html.ValidationSummary()
+</p>
+
+@using (Html.BeginForm("Login", "Account"))
+{
+    <ul class="list-group list-group-flush">
+
+        <li class=list-group-item>
+            Login:
+            @Html.TextBoxFor(f => f.Login, new { @class = "form-control" })
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Login)</span>
+        </li>
+
+        <li class=list-group-item>
+            Hasło:
+            @Html.TextBoxFor(f => f.Password, new { @class = "form-control", @type = "password" })
+            <span class="alert-warning">@Html.ValidationMessageFor(f => f.Password)</span>
+        </li>
+
+    </ul>
+    <button type="submit" class="btn btn-primary">
+        Zaloguj
+    </button>
+}
