@@ -22,6 +22,7 @@ namespace UkwWypozyczalnia
         {
             services.AddControllersWithViews();
             services.AddDbContext<FilmsContext>(options => options.UseSqlServer(Configuration.GetConnectionString("db")));
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,11 +45,13 @@ namespace UkwWypozyczalnia
 
             app.UseAuthorization();
 
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "Categories",
-                    pattern: "{categoryName}",
+                    pattern: "Category/{categoryName}",
                     defaults: new { controller = "Films", action = "FilmsList" }
                     );
 
